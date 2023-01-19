@@ -38,4 +38,30 @@ router.post('/player', (req, res, next) => {
         .catch(next)
 })
 
+//UPDATE 
+//PATCH
+router.patch('/player/:id',(req,res,next)=>{
+
+    Player.findById(req.params.id)
+    .then((player)=> {
+        return player.updateOne(req.body.player)
+    })   
+    .then(()=> res.sendStatus(204))
+    .catch(next)
+})
+
+
+// DESTROY
+// DELETE 
+router.delete('/player/:id', (req, res, next) => {
+	Player.findById(req.params.id)
+		.then((player) => {
+			return player.deleteOne()
+		})
+		.then(() => res.sendStatus(204))
+		.catch(next)
+})
+
 module.exports = router
+
+
