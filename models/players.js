@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const sponserSchema = require('./sponsers')
 
 const Schema = mongoose.Schema
 
@@ -24,7 +25,8 @@ const playerSchema = new Schema(
         },
         Team: {
             type: String,
-        }
+        },
+		sponsers: [sponserSchema]
 	},
 	{
         timestamps: true
